@@ -85,15 +85,6 @@
       color: #265567; /* Use #265567 for the result text */
       text-align: center;
     }
-    /* Image styling for the season image */
-    #seasonImage img {
-      display: block;
-      margin: 15px auto 0 auto; 
-      max-width: 100%;
-      height: auto;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
   </style>
 </head>
 
@@ -104,7 +95,6 @@
     <!-- Question 1: Skin Undertone -->
     <div class="question">
       <label>1. Test With Jewelry: Which looks more striking on you?</label>
-      <!-- We use these selections to decide warm vs. cool vs. neutral -->
       <select id="skinTone">
         <option value="warm">Gold Jewelry</option>
         <option value="cool">Silver Jewelry</option>
@@ -140,8 +130,6 @@
     <button onclick="calculateResult()">Find My Season</button>
     
     <div id="result" class="result"></div>
-    <!-- A container to display the season image -->
-    <div id="seasonImage"></div>
   </div>
 
   <!-- External JS File -->
