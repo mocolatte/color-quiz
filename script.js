@@ -5,26 +5,25 @@ function calculateResult() {
   
   let season = '';
   
-  // Basic logic to determine warm vs cool + light vs dark
+  // Simple logic:
+  // 1) If skinTone is warm => user is Spring or Autumn
+  // 2) If skinTone is cool => user is Summer or Winter
+  // 3) If neutral => guess based on hair/eye color.
+
   if (skinTone === 'warm') {
-    // If your skin tone is warm
     if (hairColor.includes('light') || eyeColor.includes('green')) {
       season = 'Spring';
     } else {
-      // For dark or medium warm
       season = 'Autumn (Fall)';
     }
   } else if (skinTone === 'cool') {
-    // If your skin tone is cool
     if (hairColor.includes('light') || eyeColor.includes('blue')) {
       season = 'Summer';
     } else {
-      // For dark or medium cool
       season = 'Winter';
     }
   } else {
-    // Neutral undertone
-    // Make a best guess based on hair/eye color
+    // Neutral
     if (hairColor.includes('light') || eyeColor.includes('blue')) {
       season = 'Summer';
     } else {
@@ -32,6 +31,5 @@ function calculateResult() {
     }
   }
   
-  const resultText = `Your best match is: ${season}!`;
-  document.getElementById('result').textContent = resultText;
+  document.getElementById('result').textContent = `Your best match is: ${season}!`;
 }
