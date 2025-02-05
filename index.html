@@ -3,115 +3,136 @@
 <head>
   <meta charset="utf-8" />
   <title>Color Season Quiz</title>
+  <!-- Google Fonts: "Breathing" (if available) + "PT Serif" -->
+  <link href="https://fonts.googleapis.com/css2?family=Breathing&family=PT+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
   <style>
+    /* ====== BODY & GLOBAL STYLES ====== */
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff; /* White background */
+      font-family: 'PT Serif', serif; /* Default body font */
+    }
+    
+    .container {
       max-width: 600px;
-      margin: 20px auto;
-      padding: 0 10px;
-      line-height: 1.5;
-      color: #333;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 8px;
+      /* Subtle border with #c4ad91 */
+      border: 2px solid #c4ad91;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      background: #fff;
     }
-    h1, h2 {
+
+    h1 {
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1em;
+      /* "Breathing" for the heading font */
+      font-family: 'Breathing', serif;
+      color: #265567;
+      font-size: 2.2em;
     }
+
     .question {
       margin-bottom: 20px;
     }
-    .question p {
-      margin: 0.5rem 0;
-    }
+
     .question label {
-      font-weight: bold;
-    }
-    .question select {
-      margin-top: 0.5rem;
-      width: 100%;
-      padding: 0.5rem;
-    }
-    button {
       display: block;
-      margin: 1rem auto;
-      padding: 0.7rem 1.5rem;
-      font-size: 1rem;
-      background-color: #4caf50;
-      color: #fff;
-      border: none;
-      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #265567; /* Use #265567 for question labels */
+    }
+
+    select {
+      padding: 8px;
+      margin-top: 5px;
+      width: 100%;
+      font-size: 1em;
+      border: 1px solid #ccc;
       border-radius: 4px;
+      font-family: inherit; /* Keep "PT Serif" */
     }
+
+    button {
+      display: inline-block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background: #265567;
+      color: #ffffff;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      font-family: inherit;
+      font-size: 1em;
+      transition: background 0.3s ease;
+    }
+
     button:hover {
-      background-color: #45a049;
+      background: #c4ad91; 
+      color: #ffffff;
     }
+
     .result {
       font-weight: bold;
       margin-top: 20px;
-      text-align: center;
-      font-size: 1.2rem;
-    }
-    .info {
-      color: #555;
-      font-size: 0.9rem;
-      margin-top: 1rem;
+      font-size: 1.2em;
+      color: #265567; /* Use #265567 for the result text */
       text-align: center;
     }
   </style>
 </head>
+
 <body>
-  <h1>Discover Your Seasonal Color Palette</h1>
-  <h2>A Simple Quiz to Determine Your Best Colors</h2>
-  
-  <!-- 1. Skin Undertone -->
-  <div class="question">
-    <label for="skinTone">1. What is your skin undertone?</label>
-    <p>
-      A quick way to figure out your undertone is to compare how gold and silver jewelry look against your skin. 
-      If you find gold looks more striking on you, select “Warm (gold suits me).” 
-      If silver pops more, select “Cool (silver suits me).” 
-      If you genuinely can’t tell or both look equally good, select "Neutral."
-    </p>
-    <select id="skinTone">
-      <option value="warm">Warm (gold suits me better)</option>
-      <option value="cool">Cool (silver suits me better)</option>
-      <option value="neutral">Neutral (both look great / can't tell)</option>
-    </select>
+  <div class="container">
+    <h1>Find Your Seasonal Color Palette</h1>
+    
+    <!-- Question 1: Skin Undertone -->
+    <div class="question">
+      <label>1. Test With Jewelry: Which looks more striking on you?</label>
+      <!-- We use these selections to decide warm vs. cool vs. neutral -->
+      <select id="skinTone">
+        <option value="warm">Gold Jewelry</option>
+        <option value="cool">Silver Jewelry</option>
+        <option value="neutral">Not Sure / Both Look Good</option>
+      </select>
+    </div>
+    
+    <!-- Question 2: Hair Color -->
+    <div class="question">
+      <label>2. What is your natural hair color?</label>
+      <select id="hairColor">
+        <option value="lightWarm">Light Warm (e.g., strawberry blond)</option>
+        <option value="lightCool">Light Cool (e.g., ash blond)</option>
+        <option value="mediumWarm">Medium Warm (e.g., golden brown)</option>
+        <option value="mediumCool">Medium Cool (e.g., ash brown)</option>
+        <option value="darkWarm">Dark Warm (e.g., warm chestnut)</option>
+        <option value="darkBrown">Dark Brown (melanated, warm undertone)</option>
+        <option value="darkCool">Dark Cool (e.g., black with blue undertone)</option>
+      </select>
+    </div>
+    
+    <!-- Question 3: Eye Color -->
+    <div class="question">
+      <label>3. What is your eye color?</label>
+      <select id="eyeColor">
+        <option value="warmGreen">Green/Hazel (warm)</option>
+        <option value="coolBlue">Blue/Gray (cool)</option>
+        <option value="warmBrown">Brown/Amber (warm)</option>
+        <option value="coolBrown">Deep Brown/Black (cool)</option>
+      </select>
+    </div>
+    
+    <button onclick="calculateResult()">Find My Season</button>
+    
+    <div id="result" class="result"></div>
   </div>
-  
-  <!-- 2. Hair Color -->
-  <div class="question">
-    <label for="hairColor">2. What is your natural hair color?</label>
-    <p>Consider your hair's base shade. Is it distinctly warm or cool?</p>
-    <select id="hairColor">
-      <option value="lightWarm">Light Warm (e.g. strawberry blond)</option>
-      <option value="lightCool">Light Cool (e.g. ash blond)</option>
-      <option value="mediumWarm">Medium Warm (e.g. golden brown)</option>
-      <option value="mediumCool">Medium Cool (e.g. ash brown)</option>
-      <option value="darkWarm">Dark Warm (e.g. warm chestnut, deep brown with red/golden undertone)</option>
-      <option value="darkCool">Dark Cool (e.g. black with a blue undertone)</option>
-    </select>
-  </div>
-  
-  <!-- 3. Eye Color -->
-  <div class="question">
-    <label for="eyeColor">3. What is your eye color?</label>
-    <p>Pick the closest description to your natural eye color.</p>
-    <select id="eyeColor">
-      <option value="warmGreen">Green/Hazel (warm)</option>
-      <option value="coolBlue">Blue/Gray (cool)</option>
-      <option value="warmBrown">Brown/Amber (warm)</option>
-      <option value="coolBrown">Deep Brown/Black (cool)</option>
-    </select>
-  </div>
-  
-  <button onclick="calculateResult()">Find My Season</button>
-  
-  <div id="result" class="result"></div>
-  
-  <div class="info">
-    <p>Not 100% sure? Don’t worry—this quiz is just for guidance. Personal style is unique!</p>
-  </div>
-  
+
+  <!-- External JS File -->
   <script src="script.js"></script>
 </body>
 </html>
