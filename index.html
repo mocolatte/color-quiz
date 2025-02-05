@@ -8,53 +8,94 @@
       font-family: Arial, sans-serif;
       max-width: 600px;
       margin: 20px auto;
-      line-height: 1.4;
+      padding: 0 10px;
+      line-height: 1.5;
+      color: #333;
     }
-    h1 {
+    h1, h2 {
       text-align: center;
+      margin-bottom: 1rem;
     }
     .question {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+    }
+    .question p {
+      margin: 0.5rem 0;
+    }
+    .question label {
+      font-weight: bold;
+    }
+    .question select {
+      margin-top: 0.5rem;
+      width: 100%;
+      padding: 0.5rem;
+    }
+    button {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #45a049;
     }
     .result {
       font-weight: bold;
       margin-top: 20px;
+      text-align: center;
+      font-size: 1.2rem;
     }
-    select, button {
-      padding: 5px;
-      margin-top: 5px;
+    .info {
+      color: #555;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h1>Find Your Seasonal Color Palette</h1>
+  <h1>Discover Your Seasonal Color Palette</h1>
+  <h2>A Simple Quiz to Determine Your Best Colors</h2>
   
-  <!-- Skin Undertone -->
+  <!-- 1. Skin Undertone -->
   <div class="question">
-    <label>1. What is your skin undertone?</label><br />
+    <label for="skinTone">1. What is your skin undertone?</label>
+    <p>
+      A quick way to figure out your undertone is to compare how gold and silver jewelry look against your skin. 
+      If you find gold looks more striking on you, select “Warm (gold suits me).” 
+      If silver pops more, select “Cool (silver suits me).” 
+      If you genuinely can’t tell or both look equally good, select "Neutral."
+    </p>
     <select id="skinTone">
-      <option value="warm">Warm (yellow/golden undertone)</option>
-      <option value="cool">Cool (pink/blue undertone)</option>
-      <option value="neutral">Neutral (hard to tell)</option>
+      <option value="warm">Warm (gold suits me better)</option>
+      <option value="cool">Cool (silver suits me better)</option>
+      <option value="neutral">Neutral (both look great / can't tell)</option>
     </select>
   </div>
   
-  <!-- Hair Color -->
+  <!-- 2. Hair Color -->
   <div class="question">
-    <label>2. What is your natural hair color?</label><br />
+    <label for="hairColor">2. What is your natural hair color?</label>
+    <p>Consider your hair's base shade. Is it distinctly warm or cool?</p>
     <select id="hairColor">
       <option value="lightWarm">Light Warm (e.g. strawberry blond)</option>
       <option value="lightCool">Light Cool (e.g. ash blond)</option>
       <option value="mediumWarm">Medium Warm (e.g. golden brown)</option>
       <option value="mediumCool">Medium Cool (e.g. ash brown)</option>
-      <option value="darkWarm">Dark Warm (e.g. warm chestnut)</option>
-      <option value="darkCool">Dark Cool (e.g. black with blue undertone)</option>
+      <option value="darkWarm">Dark Warm (e.g. warm chestnut, deep brown with red/golden undertone)</option>
+      <option value="darkCool">Dark Cool (e.g. black with a blue undertone)</option>
     </select>
   </div>
   
-  <!-- Eye Color -->
+  <!-- 3. Eye Color -->
   <div class="question">
-    <label>3. What is your eye color?</label><br />
+    <label for="eyeColor">3. What is your eye color?</label>
+    <p>Pick the closest description to your natural eye color.</p>
     <select id="eyeColor">
       <option value="warmGreen">Green/Hazel (warm)</option>
       <option value="coolBlue">Blue/Gray (cool)</option>
@@ -67,7 +108,10 @@
   
   <div id="result" class="result"></div>
   
-  <!-- Link to external JavaScript file -->
+  <div class="info">
+    <p>Not 100% sure? Don’t worry—this quiz is just for guidance. Personal style is unique!</p>
+  </div>
+  
   <script src="script.js"></script>
 </body>
 </html>
