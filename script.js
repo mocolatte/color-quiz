@@ -33,3 +33,4 @@ function calculateResult() {
   
   document.getElementById('result').textContent = `Your best match is: ${season}!`;
 }
+
