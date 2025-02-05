@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Color Season Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 20px auto;
+      line-height: 1.4;
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 15px;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    select, button {
+      padding: 5px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Find Your Seasonal Color Palette</h1>
+  
+  <!-- Skin Undertone -->
+  <div class="question">
+    <label>1. What is your skin undertone?</label><br />
+    <select id="skinTone">
+      <option value="warm">Warm (yellow/golden undertone)</option>
+      <option value="cool">Cool (pink/blue undertone)</option>
+      <option value="neutral">Neutral (hard to tell)</option>
+    </select>
+  </div>
+  
+  <!-- Hair Color -->
+  <div class="question">
+    <label>2. What is your natural hair color?</label><br />
+    <select id="hairColor">
+      <option value="lightWarm">Light Warm (e.g. strawberry blond)</option>
+      <option value="lightCool">Light Cool (e.g. ash blond)</option>
+      <option value="mediumWarm">Medium Warm (e.g. golden brown)</option>
+      <option value="mediumCool">Medium Cool (e.g. ash brown)</option>
+      <option value="darkWarm">Dark Warm (e.g. warm chestnut)</option>
+      <option value="darkCool">Dark Cool (e.g. black with blue undertone)</option>
+    </select>
+  </div>
+  
+  <!-- Eye Color -->
+  <div class="question">
+    <label>3. What is your eye color?</label><br />
+    <select id="eyeColor">
+      <option value="warmGreen">Green/Hazel (warm)</option>
+      <option value="coolBlue">Blue/Gray (cool)</option>
+      <option value="warmBrown">Brown/Amber (warm)</option>
+      <option value="coolBrown">Deep Brown/Black (cool)</option>
+    </select>
+  </div>
+  
+  <button onclick="calculateResult()">Find My Season</button>
+  
+  <div id="result" class="result"></div>
+  
+  <!-- Link to external JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
